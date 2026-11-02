@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "meter_values payload v1",
+  "description": "OCPP 1.6 MeterValues, one sample.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["power_w", "energy_wh"],
+  "properties": {
+    "power_w": { "type": "number", "description": "Active power in W." },
+    "energy_wh": { "type": "number", "minimum": 0, "description": "Meter register in Wh." }
+  }
+}

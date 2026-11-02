@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Event envelope v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["event_id", "event_type", "schema_version", "charger_id", "connector_id", "event_time", "payload"],
+  "properties": {
+    "event_id": { "type": "string", "minLength": 1, "maxLength": 128 },
+    "event_type": { "type": "string", "minLength": 1 },
+    "schema_version": { "type": "integer", "minimum": 1 },
+    "charger_id": { "type": "string", "minLength": 1, "maxLength": 64 },
+    "connector_id": { "type": "integer", "minimum": 0, "maximum": 2147483647, "description": "0 is the charger itself." },
+    "event_time": { "type": "string", "format": "date-time", "description": "RFC 3339. Charger clock." },
+    "payload": { "type": "object" }
+  }
+}

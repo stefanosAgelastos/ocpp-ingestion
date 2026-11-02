@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "connector_status payload v1",
+  "description": "OCPP 1.6 StatusNotification.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["status", "error_code"],
+  "properties": {
+    "status": {
+      "enum": ["Available", "Preparing", "Charging", "SuspendedEVSE", "SuspendedEV", "Finishing", "Reserved", "Unavailable", "Faulted"]
+    },
+    "error_code": {
+      "enum": [
+        "ConnectorLockFailure", "EVCommunicationError", "GroundFailure", "HighTemperature", "InternalError",
+        "LocalListConflict", "NoError", "OtherError", "OverCurrentFailure", "OverVoltage", "PowerMeterFailure",
+        "PowerSwitchFailure", "ReaderFailure", "ResetFailure", "UnderVoltage", "WeakSignal"
+      ]
+    }
+  }
+}

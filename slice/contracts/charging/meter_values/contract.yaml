@@ -1,0 +1,3 @@
+event_type: meter_values
+owner: charging
+field_group: meter

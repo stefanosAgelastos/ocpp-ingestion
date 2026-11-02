@@ -1,0 +1,3 @@
+event_type: connector_status
+owner: charging
+field_group: status

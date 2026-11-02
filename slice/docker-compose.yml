@@ -1,0 +1,29 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: telemetry
+      POSTGRES_PASSWORD: telemetry
+      POSTGRES_DB: telemetry
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    # TCP check: the init phase listens only on a Unix socket.
+    healthcheck:
+      test: ["CMD", "pg_isready", "-h", "127.0.0.1", "-U", "telemetry", "-d", "telemetry"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+  telemetry:
+    build: .
+    init: true
+    environment:
+      PGHOST: db
+      PGUSER: telemetry
+      PGPASSWORD: telemetry
+      PGDATABASE: telemetry
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy

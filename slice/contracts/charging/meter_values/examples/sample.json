@@ -1,0 +1,9 @@
+{
+  "event_id": "9c4e2a7f1b3d5c6e8f0a2b4c6d8e0f1a",
+  "event_type": "meter_values",
+  "schema_version": 1,
+  "charger_id": "CP-000123",
+  "connector_id": 1,
+  "event_time": "2026-11-01T18:26:30Z",
+  "payload": { "power_w": 7200, "energy_wh": 15230.5 }
+}
